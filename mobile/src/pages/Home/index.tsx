@@ -27,19 +27,25 @@ const Home = () => {
     const [uf, setUf] = useState<Option[]>([]);
     const [city, setCity] = useState<Option[]>([]);
     const [selectedUf, setSelectedUf] = useState('0');
+    const [selectedCity, setSelectedCity] = useState('0');
 
     const navigation = useNavigation();
 
     function handleNavigateToPoints() {
         navigation.navigate('Points', {
             uf: selectedUf,
-            city,
+            city: selectedCity,
         });
     }
 
     function handleSelectUf(uf : string){
         setSelectedUf(uf);
     }
+
+    function handleSelectCity(city : string){
+        setSelectedCity(city);
+    }
+
 
 
     useEffect(() => {
@@ -126,7 +132,7 @@ const Home = () => {
 
             <RNPickerSelect
             useNativeAndroidPickerStyle={false}
-            onValueChange={(value) => {handleSelectUf(value)}}
+            onValueChange={(value) => {handleSelectCity(value)}}
             placeholder={{ value: '0', label: 'Selecione uma cidade' }}
             style={{
                 ...pickerSelectStyles,
